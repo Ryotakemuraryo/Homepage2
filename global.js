@@ -17,7 +17,7 @@ function $$(selector, context = document) {
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  // Local server(when location.hostname is local host or 127.0.0.1)
-  : "/Homepage/";         // GitHub Pages repo name(otherwise)
+  : "/Homepage2/";         // GitHub Pages repo name(otherwise)
 
 
 let pages = [
