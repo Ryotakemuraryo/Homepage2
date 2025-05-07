@@ -1,0 +1,247 @@
+html{
+  --color-accent:oklch(65% 50% 0);
+  color-scheme: light dark;
+  accent-color: var(--color-accent);/*all elements that use the accent color can inherit it.*/
+  font: 100% / 1.5 system-ui;
+}
+
+body {
+    /* Set line height to 1.5 times the font size
+         and use the OS’s UI font as the website font
+       */
+    max-width: 100ch;
+    margin-inline: auto; /*center the content*/
+    padding-inline: 1rem;/*predict content from touching edges when display is downsized(add 1character size margin to both left and right*/
+    font: 100% / 1.5 system-ui;
+}
+
+nav ul,
+nav li {
+  display: contents; /*eliminating edge of list*/
+}
+
+nav {
+  display:flex;/*positioning side by side*/
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  --border-color: oklch(50% 10% 200 / 40%);/* border-bottom: 1px solid oklch(80% 3% 200);(equivalent)*/
+}
+
+nav a{
+  flex: 1;/*make width of all <a> same*/
+  text-decoration: none;/*remove underline*/
+  color: inherit;/*make links use the same text color as their parent element*/
+  text-align: center;/*center the text in its box*/
+  padding: 0.5em;/*make it easier to read by adding margin*/
+}
+
+.current{
+  border-bottom: 0.4em solid oklch(90% 3% 200);/*using bold underline to highlight current tag*/
+  padding-bottom: 0.1em;/*decrease the same height as increased due to this css group*/
+}
+
+nav a:hover {/*mouce pointing area*/
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+form {/* arranging label adn input*/
+  display: grid;
+  grid-template-columns: auto 1fr;/*auto means that the column will be as wide as its content, and 1fr means that the column will take up the remaining space*/
+  gap: 1em;
+}
+
+form label{/* arranging text and input*/
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+form button{
+  grid-column: 1 / -1;
+}
+
+.projects{/*indicating elements in class=projects*/
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  /*make the grid have as many columns as can fit in the container, each with a minimum width of 15em and a maximum width of 1fr*/
+  gap: 1em;
+}
+
+.projects article{
+  display: grid;/*make grid inside article*/
+  grid-template-rows: subgrid;/*align the height*/
+  grid-row: span 3;/*fix the height(article occupies 3 rows)*/
+  gap: 0.2em;
+}
+
+.projects article h2{
+  margin: 0;/*delete margin*/
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;       
+  font-size: 0.95rem;
+}
+
+.project-year {
+  color: #666;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+
+h1{
+  font-size: 400%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;/*narrow the gap between lines*/
+  text-wrap: balance;/*prevent uneven lines*/
+}
+
+section{
+  margin-block: 2em;
+}
+
+section h2{
+  border-bottom: 4px solid var(--color-accent);
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+header{
+  position: relative;
+  padding: 1rem;
+}
+
+.resumephoto{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 80%;        
+  object-fit: cover;
+  border: 2px solid #ccc;
+  padding: 2px;
+  background-color: white;
+}
+
+li{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+time {
+  min-width: 140px;
+  color: #666;
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+li br {
+  display: none;
+}
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+}
+
+
+dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 0.5rem; 
+  text-align: center;
+}
+
+dt {
+  grid-row: 1; 
+  font-weight: bold;
+}
+
+dd {
+  grid-row: 2; 
+  margin: 0; 
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+.swatch {
+ width: 1em;
+ height: 1em;
+ background-color: var(--color);
+ border-radius: 50%;
+ display: inline-block;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  border: 1px solid #ccc;
+  flex: 1;
+  gap: 0.3em 1em;
+  padding: 1em;
+}
+
+.legend-item {
+  display: flex;
+  gap: 0.5em;
+}
+
+.container{
+  display: flex;
+  align-items: center; 
+  gap: 2em;
+}
+
+.searchBar {
+  width: 100%;
+  padding: 0.5em; 
+  font-size: 1em;  
+  margin: 1em 0; 
+  box-sizing: border-box;
+}
+
+svg:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+path.dimmed, .legend-item.dimmed {
+  opacity: 0.3;
+}
+
+path.selected, .legend-item.selected {
+  stroke: black;
+  stroke-width: 1;
+}
