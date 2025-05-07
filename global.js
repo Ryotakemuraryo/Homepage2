@@ -25,7 +25,8 @@ let pages = [
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
     { url: 'https://github.com/Ryotakemuraryo', title: 'GitHub'},
-    { url: 'cv.html', title: 'CV'}
+    { url: 'cv.html', title: 'CV'},
+    { url: 'prvideo/', title: 'PR Video'}
     // add the rest of your pages here
 ];
 
